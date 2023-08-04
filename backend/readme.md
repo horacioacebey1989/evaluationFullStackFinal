@@ -1,3 +1,6 @@
-Spring Boot Backend
-Install
+# Spring Boot Backend
+
+## Install
+
+```
 mvn clean package
