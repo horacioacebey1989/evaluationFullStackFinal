@@ -14,7 +14,7 @@ public class Profile {
     private String fullName;
     private String country;
     @ManyToOne
-    @JoinColumn(name = "id_user")
+    @JoinColumn(name = "id_user", nullable = false)
     private User user;
 
     public Integer getIdProfile() {
