@@ -34,7 +34,6 @@ function Login({handleChange}) {
       password: "",
     });
     const handleLogin = async () => {
-      console.log(userIn);
       if(userIn.name != "" && userIn.password != ""){
         try{
           const res = await UserService.login(userIn);
@@ -43,13 +42,12 @@ function Login({handleChange}) {
             password: res.password
           }))
           this.props.callbackModal()
-          alert("Please fill out all fields")
+          alert("User logged");
           navigate("/myCourses");
         } catch (error) {
-          console.log(error)
           alert(error)
         } 
-      }
+      }else{alert("Please enter the data");}
     }
     const handleChangeName = (e) => {
       setUserIn({

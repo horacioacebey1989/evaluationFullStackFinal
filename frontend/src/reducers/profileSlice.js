@@ -1,20 +1,32 @@
-import { createProfile } from "../actions/profile";
+import { createSlice } from '@reduxjs/toolkit';
+import subscriptionSlice from './subscriptionSlice';
 
-const profileInitialState = {
-  db: null,
-};
-
-const profileReducer = (state = profileInitialState, action) => {
-    switch (action.type) {
-        case createProfile :{
-            return {
-                ...state,
-                db: action.payload.map((data) => data),
-            };
-        }
-        default:
-            return state;
-    }
+const initialState = {
+    fullName: "",
+    userName: "",
+    country: "",
+    user: ""
 }
 
-export default profileReducer;
+export const profileSlice = createSlice({
+  name: 'user',
+  initialState: initialState,
+  reducers: {
+    setProfile: (state, action) => {
+      state.fullName = action.payload.fullName;
+      state.userName = action.payload.userName;
+      state.country = action.payload.country;
+      state.user = action.payload.user;
+    },
+    unsetProfile: (state) => {
+        state.fullName = "";
+        state.userName = "";
+        state.country = "";
+        state.user = "";
+    }
+  }
+})
+
+export const { setProfile, unsetProfile } = profileSlice.actions;
+
+export default profileSlice.reducer;
